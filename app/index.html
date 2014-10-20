@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Train Snake</title>
+
+  <!-- build:css stylesheets/application.css -->
+    <link rel="stylesheet" href="stylesheets/application.css">
+  <!-- endbuild -->
+
+  <!-- build:js javascripts/application.js -->
+    <script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
+    <script type="text/javascript" src="javascripts/application.js"></script>
+  <!-- endbuild -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+  <div class="intro">
+    <div class="overlay"></div>
+    <div class="navigation">
+      <a href="#">Back</a>
+    </div>
+    <div class="content">
+      <h1 class="pvm">Train snake</h1>
+      <h3>Same as old favourite snake, but with trains. Press arrows to navigate. Try to get maximum score to appear on our scoreboard. Good luck!</h3>
+      <div class="by-center">
+        <a href="#" class="button start">Start</a>
+      </div>
+    </div>
+    <br><br><br>
+    <div class="scoreboard">
+      <h2 class="by-center">Top 20 results</h2>
+      <ul>
+        <li>1. katesolo</li>
+        <li>2. katesolo</li>
+        <li>3. katesolo</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="game">
+    <div class="navigation">
+      <a href="#" id="quit">Menu</a>
+    </div>
+  </div>
+
+  <div class="confirmation">
+    <div class="overlay"></div>
+    <div class="content by-center">
+      <h1 class="highlight mbl">Are you sure<br /> you want<br /> to quit?</h1>
+      <br><br><br><br>
+      <div>
+        <a href="#" class="button" id="back">No, go back</a>
+        <a href="#" class="button" id="confirm">Yes</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="gameover">
+    <div class="overlay"></div>
+    <div class="navigation">
+      <a href="#" id="exit">Menu</a>
+    </div>
+    <div class="content by-center">
+      <h1 class="highlight mbs">Game over</h1>
+      <h2 class="mbm">Your score is: 45678<h2>
+      <h2>Enter your name:</h2>
+      <input type="text" />
+      <a href="#" class="button" id="submit">Submit your results</a>
+    </div>
+  </div>
+
+  <div class="thankyou">
+    <div class="overlay"></div>
+    <div class="navigation">
+      <a href="#" id="exit">Menu</a>
+    </div>
+    <div class="content by-center">
+      <h1 class="highlight mbm">Thank you!</h1>
+      <h2 class="mbm">You are number 167 <br />
+        in our score board!</h2>
+      <a href="#" class="button start">Play again</a>
+    </div>
+  </div>
+
+</body>
+</html>
