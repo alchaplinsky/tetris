@@ -1,13 +1,27 @@
 .button
   display: inline-block
-  border: 2px solid #00e2a7
+  border: 1px solid #00e2a7
   color: #00e2a7
   text-decoration: none
-  font-size: 2.25rem
-  padding: 1.5rem 7rem
+  font-size: 1.125rem
+  padding: 0.75rem 0
+  box-sizing: border-box
   text-align: center
   margin: 0 auto
   transition: color .3s ease, border .3s ease
+  &.start
+    width: 9.25rem
+  &.back
+    width: 7.75rem
+    color: #fff
+    border-color: #fff
+    margin-right: 1rem
+  &.confirm
+    width: 6.5rem
+  &.submit
+    width: 12.1875rem
+  &.restart
+    width: 12.1875rem
   &:hover
     color: #fff
     border-color: #fff

@@ -3,6 +3,6 @@ module.exports =
     expand: true
     flatten: true
     cwd: 'app/javascripts'
-    src: ['*.coffee']
+    src: ['**/*.coffee']
     dest: '.tmp/javascripts'
     ext: '.js'

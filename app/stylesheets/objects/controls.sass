@@ -1,0 +1,35 @@
+.controls
+  background: rgba(0,0,0, .5)
+  border-top: 1px solid #5b5b5b
+  padding: .625rem
+  .inner
+    width: 11rem
+    min-height: 8rem
+    margin: 0 auto
+    position: relative
+  .control
+    position: absolute
+    display: inline-block
+    width: 3.125rem
+    height: 3.125rem
+    border: 1px solid #00e2a7
+    border-radius: 50%
+    background: url('../images/control.png') no-repeat
+    &.up
+      top: 0
+      left: 50%
+      margin-left: -1.5625rem
+      background-position: 0 0
+    &.down
+      top: 4.5rem
+      left: 50%
+      margin-left: -1.5625rem
+      background-position: 0 -50px
+    &.right
+      top: 2.25rem
+      right: 0
+      background-position: 0 -100px
+    &.left
+      top: 2.25rem
+      left: 0
+      background-position: 0 -150px

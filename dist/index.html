@@ -4,16 +4,10 @@
   <meta charset="UTF-8">
   <title>Train Snake</title>
 
-  <!-- build:css stylesheets/application.css -->
-    <link rel="stylesheet" href="stylesheets/application.css">
-  <!-- endbuild -->
+  <link rel="stylesheet" href="stylesheets/application.css"/>
 
-  <!-- build:js javascripts/application.js -->
-    <script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
-    <script type="text/javascript" src="javascripts/snake_js.js"></script>
-    <script type="text/javascript" src="javascripts/application.js"></script>
-  <!-- endbuild -->
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="javascripts/application.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 </head>
 <body>
   <div class="intro">
@@ -43,7 +37,7 @@
     <div class="navigation">
       <a href="#" id="quit">Menu</a>
     </div>
-    <canvas id="game-canvas" class="game-canvas" width="320" height="320"></canvas>
+    <div class="game-canvas"></div>
     <div class="controls">
       <div class="inner">
         <a href="#" class="control up"></a>
@@ -74,7 +68,7 @@
       <h1 class="highlight mbs">Game over</h1>
       <h2 class="mbm">Your score is: 45678<h2>
       <h2>Enter your name:</h2>
-      <input type="text" name="username"/>
+      <input type="text" />
       <a href="#" class="button submit" id="submit">Submit your results</a>
     </div>
   </div>

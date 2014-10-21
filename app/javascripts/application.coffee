@@ -2,9 +2,11 @@
 
 class TrainSnake
 
+  headerHeight: 41
+
   constructor: ->
     $('.intro').fadeIn(400)
-    $('.start').click =>
+    $('.start, .restart').click =>
       @startGame()
 
     $('#quit').click =>
@@ -21,6 +23,8 @@ class TrainSnake
 
   startGame: ->
     @changeState('intro, .thankyou', 'game')
+    SnakeGame()
+    #@game = new Game($('.game-canvas'))
 
   confirmQuit: ->
     @changeState('game', 'confirmation')
@@ -32,11 +36,19 @@ class TrainSnake
     @changeState('confirmation', 'gameover')
 
   submitResult: ->
-    @changeState('gameover', 'thankyou')
+    unless $('[name=username]').val() is ''
+      @changeState('gameover', 'thankyou')
 
   changeState: (from, to) ->
+    page = $(".#{to}")
     $(".#{from}").fadeOut()
-    $(".#{to}").fadeIn(200)
+    $(page).fadeIn(200)
+    container = $('.by-center', page)
+    if $(container).length isnt 0
+      containerHeight = $(container).innerHeight()
+      viewportHeight = $(window).height()
+      margin = (viewportHeight - containerHeight - @headerHeight)/2
+      $(container).css('position': 'relative', 'top': "#{margin}px")
 
 
 $ ->
