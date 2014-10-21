@@ -21,19 +21,25 @@ class TrainSnake
     $('#submit').click =>
       @submitResult()
 
+    document.addEventListener 'gameOver', =>
+      @showScore()
+
   startGame: ->
     @changeState('intro, .thankyou', 'game')
-    SnakeGame()
-    #@game = new Game($('.game-canvas'))
+    @game = new SnakeGame()
+    @game.start()
 
   confirmQuit: ->
+    @game.pause()
     @changeState('game', 'confirmation')
 
   backToGame: ->
     @changeState('confirmation', 'game')
+    @game.resume()
 
   showScore: ->
-    @changeState('confirmation', 'gameover')
+    @changeState('confirmation, .game', 'gameover')
+    $('#score').text(@game.score)
 
   submitResult: ->
     unless $('[name=username]').val() is ''

@@ -10,7 +10,7 @@
 
   <!-- build:js javascripts/application.js -->
     <script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
-    <script type="text/javascript" src="javascripts/snake_js.js"></script>
+    <script type="text/javascript" src="javascripts/snake_game.js"></script>
     <script type="text/javascript" src="javascripts/application.js"></script>
   <!-- endbuild -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -72,7 +72,7 @@
     </div>
     <div class="content by-center">
       <h1 class="highlight mbs">Game over</h1>
-      <h2 class="mbm">Your score is: 45678<h2>
+      <h2 class="mbm">Your score is: <span id="score"></span><h2>
       <h2>Enter your name:</h2>
       <input type="text" name="username"/>
       <a href="#" class="button submit" id="submit">Submit your results</a>
