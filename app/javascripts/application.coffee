@@ -38,7 +38,7 @@ class TrainSnake
     document.getElementById('score').innerText = @game.score
 
   submitResult: ->
-    unless $('[name=username]').val() is ''
+    unless document.querySelector('.username').value is ''
       @changeState('.thankyou')
 
   changeState: (to) ->
@@ -50,7 +50,7 @@ class TrainSnake
     if container isnt null
       containerHeight = container.offsetHeight
       viewportHeight = screen.height
-      margin = (viewportHeight - containerHeight - @headerHeight)/2
+      margin = (viewportHeight - containerHeight - @headerHeight - 60)/2
       container.style.position = 'relative'
       container.style.top = "#{margin}px"
 

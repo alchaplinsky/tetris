@@ -10,11 +10,10 @@
 
   <!-- build:js javascripts/application.js -->
     <script type="text/javascript" src="bower_components/fastclick/lib/fastclick.js"></script>
-    <script type="text/javascript" src="bower_components/zepto/zepto.js"></script>
     <script type="text/javascript" src="javascripts/snake_game.js"></script>
     <script type="text/javascript" src="javascripts/application.js"></script>
   <!-- endbuild -->
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 </head>
 <body>
   <div class="intro">
@@ -73,7 +72,7 @@
       <h1 class="highlight mbs">Game over</h1>
       <h2 class="mbm">Your score is: <span id="score"></span><h2>
       <h2>Enter your name:</h2>
-      <input type="text" name="username"/>
+      <input type="text" class="username" name="username"/>
       <a href="#" class="button submit" id="submit">Submit your results</a>
     </div>
   </div>
