@@ -1,61 +1,59 @@
-# Main CoffeeScript File
-
 class TrainSnake
 
   headerHeight: 41
+  pages: '.intro, .game, .confirmation, .gameover, .thankyou'
 
   constructor: ->
-    $('.intro').fadeIn(400)
-    $('.start, .restart').click =>
-      @startGame()
+    document.getElementById('start').addEventListener 'click', => @startGame()
+    document.getElementById('restart').addEventListener 'click', => @startGame()
+    document.getElementById('quit').addEventListener 'click', => @confirmQuit()
+    document.getElementById('back').addEventListener 'click', => @backToGame()
+    document.getElementById('confirm').addEventListener 'click', => @goHome()
+    document.getElementById('submit').addEventListener 'click', => @submitResult()
+    document.addEventListener 'click', (e) =>
+      if e.target.attributes['class'] && e.target.attributes['class'].value is 'home'
+        @goHome()
 
-    $('#quit').click =>
-      @confirmQuit()
+    document.addEventListener 'gameOver', => @showScore()
+    @changeState('.intro')
 
-    $('#back').click =>
-      @backToGame()
-
-    $('#confirm').click =>
-      @showScore()
-
-    $('#submit').click =>
-      @submitResult()
-
-    document.addEventListener 'gameOver', =>
-      @showScore()
+  goHome: ->
+    @changeState('.intro')
 
   startGame: ->
-    @changeState('intro, .thankyou', 'game')
+    @changeState('.game')
     @game = new SnakeGame()
     @game.start()
 
   confirmQuit: ->
     @game.pause()
-    @changeState('game', 'confirmation')
+    @changeState('.confirmation')
 
   backToGame: ->
-    @changeState('confirmation', 'game')
+    @changeState('.game')
     @game.resume()
 
   showScore: ->
-    @changeState('confirmation, .game', 'gameover')
-    $('#score').text(@game.score)
+    @changeState('.gameover')
+    document.getElementById('score').innerText = @game.score
 
   submitResult: ->
     unless $('[name=username]').val() is ''
-      @changeState('gameover', 'thankyou')
+      @changeState('.thankyou')
 
-  changeState: (from, to) ->
-    page = $(".#{to}")
-    $(".#{from}").fadeOut()
-    $(page).fadeIn(200)
-    container = $('.by-center', page)
-    if $(container).length isnt 0
-      containerHeight = $(container).innerHeight()
-      viewportHeight = $(window).height()
+  changeState: (to) ->
+    for page in document.querySelectorAll(@pages)
+      page.classList.remove('active')
+    target = document.querySelector(to)
+    target.classList.add('active')
+    container = document.querySelector('.active .by-center')
+    if container isnt null
+      containerHeight = container.offsetHeight
+      viewportHeight = screen.height
       margin = (viewportHeight - containerHeight - @headerHeight)/2
-      $(container).css('position': 'relative', 'top': "#{margin}px")
+      container.style.position = 'relative'
+      container.style.top = "#{margin}px"
 
-
-$ ->
+window.onload = ->
+  FastClick.attach(document.body)
   new TrainSnake()

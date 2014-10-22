@@ -16,8 +16,16 @@ class window.SnakeGame
     @canvas = document.getElementById("game-canvas")
     @context = @canvas.getContext("2d")
     @navigation()
+    image = new Image()
+    image.src = 'images/snake_chunk.png'
+    image.onload = => @snakePattern = @context.createPattern(image, "repeat")
 
   navigation: ->
+    document.addEventListener 'click', (e) =>
+      if e.target.attributes['class'] && e.target.attributes['class'].value.match(/control/)
+        @snake.direction = e.target.attributes['data-direction'].value
+    , false
+
     addEventListener "keydown", (e) =>
       switch e.keyCode
         when 38 then lastKey = 'up'
@@ -98,12 +106,7 @@ class Snake
     @drawSection(section.split(',')) for section in @sections
 
   drawSection: (section) ->
-    image = new Image()
-    image.src = '../images/snake_chunk.png'
-    self = @
-    image.onload = ->
-      pattern = self.game.context.createPattern(@, "repeat")
-      self.game.drawBox({ x: parseInt(section[0]), y: parseInt(section[1]), size: self.size, image: pattern });
+    @game.drawBox(x: parseInt(section[0]), y: parseInt(section[1]), size: @size, image: @game.snakePattern )
 
   checkCollision: ->
     @game.stop() if @isCollision(@x, @y)

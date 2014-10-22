@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="stylesheets/application.css"/>
 
   <script src="javascripts/application.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 <body>
   <div class="intro">
@@ -19,7 +19,7 @@
       <h1 class="pvm">Train snake</h1>
       <h3>Same as old favourite snake, but with trains. Press arrows to navigate. Try to get maximum score to appear on our scoreboard. Good luck!</h3>
       <div class="by-center">
-        <a href="#" class="button start">Start</a>
+        <a href="#" class="button start" id="start">Start</a>
       </div>
     </div>
     <br><br><br>
@@ -37,13 +37,13 @@
     <div class="navigation">
       <a href="#" id="quit">Menu</a>
     </div>
-    <div class="game-canvas"></div>
+    <canvas id="game-canvas" class="game-canvas" width="320" height="320"></canvas>
     <div class="controls">
       <div class="inner">
-        <a href="#" class="control up"></a>
-        <a href="#" class="control right"></a>
-        <a href="#" class="control down"></a>
-        <a href="#" class="control left"></a>
+        <a href="#" class="control up" data-direction="up"></a>
+        <a href="#" class="control right" data-direction="right"></a>
+        <a href="#" class="control down" data-direction="down"></a>
+        <a href="#" class="control left" data-direction="left"></a>
       </div>
     </div>
   </div>
@@ -62,13 +62,13 @@
   <div class="gameover">
     <div class="overlay"></div>
     <div class="navigation">
-      <a href="#" id="exit">Menu</a>
+      <a href="#" class="home">Menu</a>
     </div>
     <div class="content by-center">
       <h1 class="highlight mbs">Game over</h1>
-      <h2 class="mbm">Your score is: 45678<h2>
+      <h2 class="mbm">Your score is: <span id="score"></span><h2>
       <h2>Enter your name:</h2>
-      <input type="text" />
+      <input type="text" name="username"/>
       <a href="#" class="button submit" id="submit">Submit your results</a>
     </div>
   </div>
@@ -76,13 +76,13 @@
   <div class="thankyou">
     <div class="overlay"></div>
     <div class="navigation">
-      <a href="#" id="exit">Menu</a>
+      <a href="#" class="home">Menu</a>
     </div>
     <div class="content by-center">
       <h1 class="highlight mbm">Thank you!</h1>
       <h2 class="mbm">You are number 167 <br />
         in our score board!</h2>
-      <a href="#" class="button restart">Play again</a>
+      <a href="#" class="button restart" id="restart">Play again</a>
     </div>
   </div>
 

@@ -9,7 +9,7 @@ body
   font-family: 'Raleway'
   font-size: 0.93rem
   color: #fff
-  background: url('/images/trainsnake_bg.png')
+  background: url('../images/trainsnake_bg.png')
   background-size: cover
 
 .navigation
@@ -30,6 +30,12 @@ body
 .intro, .game, .confirmation, .gameover, .thankyou
   height: 100%
   display: none
+  opacity: 0
+  &.active
+    display: block
+    transition: opacity 2s ease
+    opacity: 1
+
 
 .overlay
   position: absolute

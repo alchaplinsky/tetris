@@ -9,7 +9,8 @@
   <!-- endbuild -->
 
   <!-- build:js javascripts/application.js -->
-    <script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
+    <script type="text/javascript" src="bower_components/fastclick/lib/fastclick.js"></script>
+    <script type="text/javascript" src="bower_components/zepto/zepto.js"></script>
     <script type="text/javascript" src="javascripts/snake_game.js"></script>
     <script type="text/javascript" src="javascripts/application.js"></script>
   <!-- endbuild -->
@@ -24,9 +25,7 @@
     <div class="content">
       <h1 class="pvm">Train snake</h1>
       <h3>Same as old favourite snake, but with trains. Press arrows to navigate. Try to get maximum score to appear on our scoreboard. Good luck!</h3>
-      <div class="by-center">
-        <a href="#" class="button start">Start</a>
-      </div>
+      <a href="#" class="button start" id="start">Start</a>
     </div>
     <br><br><br>
     <div class="scoreboard">
@@ -46,10 +45,10 @@
     <canvas id="game-canvas" class="game-canvas" width="320" height="320"></canvas>
     <div class="controls">
       <div class="inner">
-        <a href="#" class="control up"></a>
-        <a href="#" class="control right"></a>
-        <a href="#" class="control down"></a>
-        <a href="#" class="control left"></a>
+        <a href="#" class="control up" data-direction="up"></a>
+        <a href="#" class="control right" data-direction="right"></a>
+        <a href="#" class="control down" data-direction="down"></a>
+        <a href="#" class="control left" data-direction="left"></a>
       </div>
     </div>
   </div>
@@ -68,7 +67,7 @@
   <div class="gameover">
     <div class="overlay"></div>
     <div class="navigation">
-      <a href="#" id="exit">Menu</a>
+      <a href="#" class="home">Menu</a>
     </div>
     <div class="content by-center">
       <h1 class="highlight mbs">Game over</h1>
@@ -82,13 +81,13 @@
   <div class="thankyou">
     <div class="overlay"></div>
     <div class="navigation">
-      <a href="#" id="exit">Menu</a>
+      <a href="#" class="home">Menu</a>
     </div>
     <div class="content by-center">
       <h1 class="highlight mbm">Thank you!</h1>
       <h2 class="mbm">You are number 167 <br />
         in our score board!</h2>
-      <a href="#" class="button restart">Play again</a>
+      <a href="#" class="button restart" id="restart">Play again</a>
     </div>
   </div>
 
