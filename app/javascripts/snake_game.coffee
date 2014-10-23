@@ -1,5 +1,7 @@
 class window.SnakeGame
 
+  gridSize: 16
+
   inverseDirection =
     'up':'down'
     'left':'right'
@@ -61,19 +63,26 @@ class window.SnakeGame
         @snake.draw()
     , 1000 / @fps
 
+  canvasCenter: ->
+    x = Math.floor(@canvas.width / @gridSize / 2) * @gridSize
+    y = Math.floor(@canvas.height / @gridSize / 2) * @gridSize
+    [x, y]
+
+  randomCell: ->
+    max = @canvas.height/@gridSize - 1
+    @randomNumber(0, max) * @gridSize
+
+  randomNumber: (minimum, maximum) ->
+    Math.round( Math.random() * (maximum - minimum) + minimum)
+
   drawBox: (options) ->
     if(options.color)
       @context.fillStyle = options.color
     else
       @context.fillStyle = options.image
     @context.beginPath()
-    @context.moveTo(options.x - (options.size / 2), options.y - (options.size / 2))
-    @context.lineTo(options.x + (options.size / 2), options.y - (options.size / 2))
-    @context.lineTo(options.x + (options.size / 2), options.y + (options.size / 2))
-    @context.lineTo(options.x - (options.size / 2), options.y + (options.size / 2))
-    @context.closePath()
+    @context.rect options.x, options.y, @gridSize, @gridSize
     @context.fill()
-
 
   resetCanvas: ->
     @context.clearRect(0, 0, @canvas.width, @canvas.height)
@@ -85,39 +94,35 @@ class Snake
   constructor: (@game) ->
     @sections = []
     @direction = 'left'
-    @x = @game.canvas.width / 2 + @size / 2
-    @y = @game.canvas.height / 2 + @size / 2
-    i = @x + (5 * @size)
+    center = @game.canvasCenter()
+    @x = center[0]
+    @y = center[1]
+    i = @x + (5 * @game.gridSize)
     while i >= @x
       @sections.push i + "," + @y
-      i -= @size
+      i -= @game.gridSize
 
   move: ->
     switch @direction
-      when 'up' then @y -= @size
-      when 'down' then @y+= @size
-      when 'left' then @x -= @size
-      when 'right' then @x += @size
+      when 'up' then @y -= @game.gridSize
+      when 'down' then @y+= @game.gridSize
+      when 'left' then @x -= @game.gridSize
+      when 'right' then @x += @game.gridSize
     @checkCollision()
     @checkGrowth()
     @sections.push(@x + ',' + @y)
 
   draw: ->
-    @drawSection(section.split(',')) for section in @sections
+    @drawSection section.split(',') for section in @sections
 
   drawSection: (section) ->
-    @game.drawBox(x: parseInt(section[0]), y: parseInt(section[1]), size: @size, image: @game.snakePattern )
+    @game.drawBox x: parseInt(section[0]), y: parseInt(section[1]), image: @game.snakePattern
 
   checkCollision: ->
     @game.stop() if @isCollision(@x, @y)
 
   isCollision: (x, y) ->
-    if (x < @size/2 ||
-        x > @game.canvas.width ||
-        y < @size/2 ||
-        y > @game.canvas.height ||
-        @sections.indexOf(x+','+y) >= 0)
-      return true
+    x < 0 || x is @game.canvas.width || y < 0 || y is @game.canvas.height || @sections.indexOf(x+','+y) >= 0
 
   checkGrowth: ->
     if @x is @game.food.x && @y is @game.food.y
@@ -127,16 +132,14 @@ class Snake
     else
       @sections.shift()
 
-
 class Food
   color: '#0FF'
 
   constructor: (@game) ->
 
   set: ->
-    @size = @game.snake.size
-    @x = (Math.ceil(Math.random() * 10) * @game.snake.size * 2) - @game.snake.size / 2
-    @y = (Math.ceil(Math.random() * 10) * @game.snake.size * 2) - @game.snake.size / 2
+    @x = @game.randomCell()
+    @y = @game.randomCell()
 
   draw: ->
-    @game.drawBox( x: @x, y: @y, size: @size, color: @color)
+    @game.drawBox x: @x, y: @y, color: @color
