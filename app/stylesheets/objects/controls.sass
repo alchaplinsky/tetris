@@ -1,9 +1,7 @@
 .controls
   position: absolute
-  bottom: 0
+  bottom: 40px
   width: 100%
-  background: rgba(0,0,0, .5)
-  border-top: 1px solid #5b5b5b
   padding: .625rem 0
   .inner
     width: 11rem
@@ -15,24 +13,24 @@
     display: inline-block
     width: 3.125rem
     height: 3.125rem
+    line-height: 3.125rem
+    font-size: 1.2rem
     border: 1px solid #00e2a7
     border-radius: 50%
-    background: url('../images/control.png') no-repeat
-    &.up
+    text-decoration: none
+    text-align: center
+    color: #00e2a7
+    &.icon-arrow-up
       top: 0
       left: 50%
       margin-left: -1.5625rem
-      background-position: 0 0
-    &.down
+    &.icon-arrow-down
       top: 4.5rem
       left: 50%
       margin-left: -1.5625rem
-      background-position: 0 -50px
-    &.right
+    &.icon-arrow-right
       top: 2.25rem
       right: 0
-      background-position: 0 -100px
-    &.left
+    &.icon-arrow-left
       top: 2.25rem
       left: 0
-      background-position: 0 -150px
