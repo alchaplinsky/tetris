@@ -10,11 +10,10 @@
 
   <!-- build:js javascripts/application.js -->
     <script type="text/javascript" src="bower_components/fastclick/lib/fastclick.js"></script>
+    <script type="text/javascript" src="bower_components/zepto/zepto.js"></script>
     <script type="text/javascript" src="javascripts/snake_game.js"></script>
     <script type="text/javascript" src="javascripts/application.js"></script>
   <!-- endbuild -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no" />
 </head>
 <body>
@@ -32,12 +31,7 @@
     <br><br><br>
     <div class="scoreboard">
       <h2>Top 20 results</h2>
-      <ol>
-        <li>katesolo <span class="highlight">560</span></li>
-        <li>mathew.macpie <span class="highlight">510</span></li>
-        <li>ekaterina.solomeina <span class="highlight">440</span></li>
-        <li>alchapone <span class="highlight">400</span></li>
-      </ol>
+      <ol></ol>
     </div>
   </div>
 
@@ -74,7 +68,7 @@
     </div>
     <div class="content by-center">
       <h1 class="highlight mbs">Game over</h1>
-      <h2 class="mbm">Your score is: <span id="score"></span><h2>
+      <h2 class="mbm">Your score is: <span id="score" class="highlight"></span><h2>
       <h2>Enter your name:</h2>
       <input type="text" class="username" name="username"/>
       <span class="button submit" id="submit">Submit your results</span>
@@ -87,9 +81,8 @@
       <span class="home icon-back">Menu</span>
     </div>
     <div class="content by-center">
-      <h1 class="highlight mbm">Thank you!</h1>
-      <h2 class="mbm">You are number 167 <br />
-        in our score board!</h2>
+      <h1 class="highlight mbm" id="message-title"></h1>
+      <h2 class="mbm" id="message-text"></h2>
       <span class="button restart" id="restart">Play again</span>
     </div>
   </div>

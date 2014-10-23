@@ -3,8 +3,26 @@ class TrainSnake
   headerHeight: 41
   controlsHeight: 149
   gridSize: 16
+  url: 'http://localhost:3000/scores'
 
   pages: '.intro, .game, .confirmation, .gameover, .thankyou'
+
+  messages: [
+      title: 'Congratulations!!'
+      text: 'You\'ve got the longest snake in the North!'
+    ,
+      title: 'My what a big snake!'
+      text: ''
+    ,
+      title: ''
+      text: 'You\'ve got a real long snake but there\'s bigger on this train!'
+    ,
+      title: 'Pretty good'
+      text: 'Keep shaking the snake!'
+    ,
+      title: 'Sorry Snake,'
+      text: 'You\'re at the bottom of the ladder.'
+  ]
 
   constructor: ->
     document.getElementById('start').addEventListener 'click', => @startGame()
@@ -21,10 +39,16 @@ class TrainSnake
       setTimeout =>
         @showScore()
       , 500
-    @changeState('.intro')
+
+    @goHome()
 
   goHome: ->
-    @changeState('.intro')
+    @getResults (results) =>
+      html = ''
+      for result in results
+        html += "<li>#{result.name} <span class='highlight'>#{result.points}</span></li>"
+      document.querySelector('.scoreboard ol').innerHTML = html
+      @changeState('.intro')
 
   startGame: ->
     @changeState('.game')
@@ -45,8 +69,25 @@ class TrainSnake
     document.getElementById('score').innerText = @game.score
 
   submitResult: ->
-    unless document.querySelector('.username').value is ''
-      @changeState('.thankyou')
+    name = document.querySelector('.username').value
+    unless name is ''
+      @saveResult name, @game.score, (rating) =>
+        @changeState('.thankyou')
+        @setMessage(rating)
+
+  setMessage: (rating) ->
+    if rating is 1
+      message = @messages[0]
+    else if 5 >= rating >= 2
+      message = @messages[1]
+    else if 10 >= rating >= 6
+      message = @messages[2]
+    else if 30 >= rating >= 11
+      message = @messages[3]
+    else if 30 < rating
+      message = @messages[4]
+    document.getElementById('message-title').innerText = message.title
+    document.getElementById('message-text').innerText = message.text
 
   calculateGameArea: ->
     gameCanvas = document.getElementById('game-canvas')
@@ -68,10 +109,25 @@ class TrainSnake
     container = document.querySelector('.active .by-center')
     if container isnt null
       containerHeight = container.offsetHeight
-      viewportHeight = document.querySelector('.game').offsetHeight
+      viewportHeight = screen.height
       margin = (viewportHeight - containerHeight - @headerHeight - 60)/2
       container.style.position = 'relative'
       container.style.top = "#{margin}px"
+
+  getResults: (callback) ->
+    $.ajax
+      type: 'GET'
+      url: @url
+      success: (data) ->
+        callback(data)
+
+  saveResult: (name, score, callback) ->
+    $.ajax
+      type: 'POST'
+      url: @url
+      data:  score: name: name, points: score
+      success: (data) ->
+        callback(data.rating)
 
 window.onload = ->
   FastClick.attach(document.body)
