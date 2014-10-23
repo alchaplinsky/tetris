@@ -34,7 +34,7 @@ class window.SnakeGame
         when 40 then lastKey = 'down'
         when 37 then lastKey = 'left'
         when 39 then lastKey = 'right'
-      @snake.direction = lastKey if lastKey != inverseDirection[@snake.direction]
+      @snake.direction = lastKey if lastKey isnt inverseDirection[@snake.direction]
     , false
 
   start: ->

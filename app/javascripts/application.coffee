@@ -14,10 +14,13 @@ class TrainSnake
     document.getElementById('confirm').addEventListener 'click', => @goHome()
     document.getElementById('submit').addEventListener 'click', => @submitResult()
     document.addEventListener 'click', (e) =>
-      if e.target.attributes['class'] && e.target.attributes['class'].value is 'home'
+      if e.target.attributes['class'] && e.target.attributes['class'].value.match /home/
         @goHome()
 
-    #document.addEventListener 'gameOver', => @showScore()
+    document.addEventListener 'gameOver', =>
+      setTimeout =>
+        @showScore()
+      , 500
     @changeState('.intro')
 
   goHome: ->
@@ -28,7 +31,6 @@ class TrainSnake
     @calculateGameArea()
     @game = new SnakeGame()
     @game.start()
-    #@game.pause()
 
   confirmQuit: ->
     @game.pause()
@@ -47,15 +49,16 @@ class TrainSnake
       @changeState('.thankyou')
 
   calculateGameArea: ->
-    areaSize = Math.floor(@viewportSize()/@gridSize) * @gridSize
     gameCanvas = document.getElementById('game-canvas')
-    gameCanvas.attributes.height.value = areaSize
-    gameCanvas.attributes.width.value = areaSize
+    gameCanvas.attributes.height.value = @availableHeight()
+    gameCanvas.attributes.width.value = @availableWidth()
 
-  viewportSize: ->
-    width = screen.width
-    height = screen.height - @headerHeight - @controlsHeight
-    if height > width then width else height
+  availableWidth: ->
+    Math.floor(screen.width/@gridSize) * @gridSize
+
+  availableHeight: ->
+    height = document.querySelector('.game').offsetHeight - @headerHeight - @controlsHeight
+    Math.floor(height/@gridSize) * @gridSize
 
   changeState: (to) ->
     for page in document.querySelectorAll(@pages)
@@ -65,7 +68,7 @@ class TrainSnake
     container = document.querySelector('.active .by-center')
     if container isnt null
       containerHeight = container.offsetHeight
-      viewportHeight = screen.height
+      viewportHeight = document.querySelector('.game').offsetHeight
       margin = (viewportHeight - containerHeight - @headerHeight - 60)/2
       container.style.position = 'relative'
       container.style.top = "#{margin}px"

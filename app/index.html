@@ -13,18 +13,21 @@
     <script type="text/javascript" src="javascripts/snake_game.js"></script>
     <script type="text/javascript" src="javascripts/application.js"></script>
   <!-- endbuild -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no" />
 </head>
 <body>
+  <div id="scroll"></div>
   <div class="intro">
     <div class="overlay"></div>
     <div class="navigation">
-      <a href="#" class="icon-back">Back</a>
+      <span class="icon-back">Back</span>
     </div>
     <div class="content">
       <h1 class="pvm">Train snake</h1>
       <h3>Same as old favourite snake, but with trains. Press arrows to navigate. Try to get maximum score to appear on our scoreboard. Good luck!</h3>
-      <a href="#" class="button start" id="start">Start</a>
+      <span class="button start" id="start">Start</span>
     </div>
     <br><br><br>
     <div class="scoreboard">
@@ -40,15 +43,15 @@
 
   <div class="game">
     <div class="navigation">
-      <a href="#" id="quit" class="icon-back">Menu</a>
+      <span id="quit" class="icon-back">Menu</span>
     </div>
-    <canvas id="game-canvas" class="game-canvas" height="" width=""></canvas>
+    <canvas id="game-canvas" class="game-canvas" height="288" width="320"></canvas>
     <div class="controls">
       <div class="inner">
-        <a href="#" class="control icon-arrow-up" data-direction="up"></a>
-        <a href="#" class="control icon-arrow-right" data-direction="right"></a>
-        <a href="#" class="control icon-arrow-down" data-direction="down"></a>
-        <a href="#" class="control icon-arrow-left" data-direction="left"></a>
+        <span class="control icon-arrow-up" data-direction="up"></span>
+        <span class="control icon-arrow-right" data-direction="right"></span>
+        <span class="control icon-arrow-down" data-direction="down"></span>
+        <span class="control icon-arrow-left" data-direction="left"></span>
       </div>
     </div>
   </div>
@@ -58,8 +61,8 @@
     <div class="content by-center">
       <h1 class="highlight mbl">Are you sure<br /> you want<br /> to quit?</h1>
       <div>
-        <a href="#" class="button back" id="back">No, go back</a>
-        <a href="#" class="button confirm" id="confirm">Yes</a>
+        <span class="button back" id="back">No, go back</span>
+        <span class="button confirm" id="confirm">Yes</span>
       </div>
     </div>
   </div>
@@ -67,27 +70,27 @@
   <div class="gameover">
     <div class="overlay"></div>
     <div class="navigation">
-      <a href="#" class="home">Menu</a>
+      <span class="home icon-back">Menu</span>
     </div>
     <div class="content by-center">
       <h1 class="highlight mbs">Game over</h1>
       <h2 class="mbm">Your score is: <span id="score"></span><h2>
       <h2>Enter your name:</h2>
       <input type="text" class="username" name="username"/>
-      <a href="#" class="button submit" id="submit">Submit your results</a>
+      <span class="button submit" id="submit">Submit your results</span>
     </div>
   </div>
 
   <div class="thankyou">
     <div class="overlay"></div>
     <div class="navigation">
-      <a href="#" class="home">Menu</a>
+      <span class="home icon-back">Menu</span>
     </div>
     <div class="content by-center">
       <h1 class="highlight mbm">Thank you!</h1>
       <h2 class="mbm">You are number 167 <br />
         in our score board!</h2>
-      <a href="#" class="button restart" id="restart">Play again</a>
+      <span class="button restart" id="restart">Play again</span>
     </div>
   </div>
 
