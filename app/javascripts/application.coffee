@@ -69,11 +69,11 @@ class TrainSnake
     document.getElementById('score').innerText = @game.score
 
   submitResult: ->
-    name = document.querySelector('.username').value
+    name = $('.username').val()
     unless name is ''
       @saveResult name, @game.score, (rating) =>
-        @changeState('.thankyou')
-        @setMessage(rating)
+        @changeState '.thankyou', =>
+          @setMessage(rating)
 
   setMessage: (rating) ->
     if rating is 1
@@ -86,13 +86,13 @@ class TrainSnake
       message = @messages[3]
     else if 30 < rating
       message = @messages[4]
-    document.getElementById('message-title').innerText = message.title
-    document.getElementById('message-text').innerText = message.text
+    $('#message-title').text message.title
+    $('#message-text').text message.text
 
   calculateGameArea: ->
-    gameCanvas = document.getElementById('game-canvas')
-    gameCanvas.attributes.height.value = @availableHeight()
-    gameCanvas.attributes.width.value = @availableWidth()
+    gameCanvas = $('#game-canvas')
+    gameCanvas.height @availableHeight()
+    gameCanvas.width @availableWidth()
 
   availableWidth: ->
     Math.floor(screen.width/@gridSize) * @gridSize
@@ -101,18 +101,16 @@ class TrainSnake
     height = document.querySelector('.game').offsetHeight - @headerHeight - @controlsHeight
     Math.floor(height/@gridSize) * @gridSize
 
-  changeState: (to) ->
-    for page in document.querySelectorAll(@pages)
-      page.classList.remove('active')
-    target = document.querySelector(to)
-    target.classList.add('active')
-    container = document.querySelector('.active .by-center')
-    if container isnt null
-      containerHeight = container.offsetHeight
-      viewportHeight = screen.height
-      margin = (viewportHeight - containerHeight - @headerHeight - 60)/2
-      container.style.position = 'relative'
-      container.style.top = "#{margin}px"
+  changeState: (to, callback = null) ->
+    $(page).removeClass('active') for page in $(@pages)
+    $(to).addClass('active')
+    callback() if callback
+    container = $('.active .by-center')
+    if container.length isnt 0
+      containerHeight = $(container).height()
+      viewportHeight = $('.page.active').height()
+      margin = (viewportHeight - containerHeight - @headerHeight)/2
+      container.css(position: 'relative', top: "#{margin}px")
 
   getResults: (callback) ->
     $.ajax
