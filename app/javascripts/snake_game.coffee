@@ -62,7 +62,11 @@ class window.SnakeGame
     y = Math.floor(@canvas.height / @gridSize / 2) * @gridSize
     [x, y]
 
-  randomCell: ->
+  randomX: ->
+    max = @canvas.width/@gridSize - 1
+    @randomNumber(0, max) * @gridSize
+
+  randomY: ->
     max = @canvas.height/@gridSize - 1
     @randomNumber(0, max) * @gridSize
 
@@ -82,8 +86,6 @@ class window.SnakeGame
     @context.clearRect(0, 0, @canvas.width, @canvas.height)
 
 class Snake
-
-  size: 16
 
   constructor: (@game) ->
     @sections = []
@@ -132,8 +134,8 @@ class Food
   constructor: (@game) ->
 
   set: ->
-    @x = @game.randomCell()
-    @y = @game.randomCell()
+    @x = @game.randomX()
+    @y = @game.randomY()
 
   draw: ->
     @game.drawBox x: @x, y: @y, color: @color

@@ -58,7 +58,7 @@ class TrainSnake
 
   confirmQuit: ->
     @game.pause()
-    @changeState('.confirmation')
+    #@changeState('.confirmation')
 
   backToGame: ->
     @changeState('.game')
@@ -91,8 +91,8 @@ class TrainSnake
 
   calculateGameArea: ->
     gameCanvas = $('#game-canvas')
-    gameCanvas.height @availableHeight()
-    gameCanvas.width @availableWidth()
+    gameCanvas.attr('height', @availableHeight())
+    gameCanvas.attr('width', @availableWidth())
 
   availableWidth: ->
     Math.floor(screen.width/@gridSize) * @gridSize
