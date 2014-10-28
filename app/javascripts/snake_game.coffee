@@ -8,12 +8,6 @@ class window.SnakeGame
     'right':'left'
     'down':'up'
 
-  keys =
-    up: [38, 75, 87]
-    down: [40, 74, 83]
-    left: [37, 65, 72]
-    right: [39, 68, 76]
-
   constructor: ->
     @canvas = document.getElementById("game-canvas")
     @context = @canvas.getContext("2d")
@@ -40,7 +34,7 @@ class window.SnakeGame
   start: ->
     @over = false
     @score = 0
-    @fps = 8
+    @fps = 5
     @snake = new Snake(@)
     @food = new Food(@)
     @food.set()
@@ -97,7 +91,7 @@ class Snake
     center = @game.canvasCenter()
     @x = center[0]
     @y = center[1]
-    i = @x + (5 * @game.gridSize)
+    i = @x + (0 * @game.gridSize)
     while i >= @x
       @sections.push i + "," + @y
       i -= @game.gridSize
