@@ -95,7 +95,8 @@ class TrainSnake
     gameCanvas.attr('width', @availableWidth())
 
   availableWidth: ->
-    Math.floor(screen.width/@gridSize) * @gridSize
+    width = Math.floor(screen.width/@gridSize) * @gridSize
+    if width > 320 then 320 else width
 
   availableHeight: ->
     height = document.querySelector('.game').offsetHeight - @headerHeight - @controlsHeight
