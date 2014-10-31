@@ -49,6 +49,7 @@ class TrainSnake
         html += "<li>#{result.name} <span class='highlight'>#{result.points}</span></li>"
       document.querySelector('.scoreboard ol').innerHTML = html
       @changeState('.intro')
+      $('.scoreboard').height($(window).height() - 385)
 
   startGame: ->
     @changeState('.game')
