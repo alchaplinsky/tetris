@@ -58,7 +58,7 @@ class TrainSnake
 
   confirmQuit: ->
     @game.pause()
-    #@changeState('.confirmation')
+    @changeState('.confirmation')
 
   backToGame: ->
     @changeState('.game')

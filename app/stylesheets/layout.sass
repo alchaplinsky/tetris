@@ -9,10 +9,12 @@ body
   font-family: 'Raleway'
   font-size: 0.93rem
   color: #fff
-  background: #282828 url('../images/trainsnake_bg.png') no-repeat
+  background: #282828 url('../images/trainsnake_bg.png') repeat-y
   background-position: center top
 
 .navigation
+  max-width: 288px
+  margin: 0 auto
   position: relative
   z-index: 2
   background: rgba(0,0,0,.4)
@@ -45,10 +47,11 @@ body
 .overlay
   position: absolute
   top: 0
-  left: 0
+  left: 50%
   z-index: 1
   height: 100%
-  width: 100%
+  width: 320px
+  margin-left: -160px
   background: rgba(0,0,0,.3)
 
 .confirmation, .gameover, .thankyou
