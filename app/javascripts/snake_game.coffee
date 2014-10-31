@@ -1,6 +1,6 @@
 class window.SnakeGame
 
-  gridSize: 16
+  gridSize: 22
 
   inverseDirection =
     'up':'down'
