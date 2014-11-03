@@ -2,7 +2,7 @@ class TrainSnake
 
   headerHeight: 41
   controlsHeight: 149
-  gridSize: 22
+  gridSize: 20
   url: 'http://afternoon-reaches-8379.herokuapp.com/scores'
 
   pages: '.intro, .game, .confirmation, .gameover, .thankyou'
@@ -101,7 +101,9 @@ class TrainSnake
 
   availableHeight: ->
     height = document.querySelector('.game').offsetHeight - @headerHeight - @controlsHeight
-    Math.floor(height/@gridSize) * @gridSize
+    height = Math.floor(height/@gridSize) * @gridSize
+    if height > 320 then 320 else height
+    #Math.floor(height/@gridSize) * @gridSize
 
   changeState: (to, callback = null) ->
     $(page).removeClass('active') for page in $(@pages)
