@@ -97,13 +97,12 @@ class TrainSnake
 
   availableWidth: ->
     width = Math.floor(screen.width/@gridSize) * @gridSize
-    if width > 308 then 308 else width
+    if width > 320 then 320 else width
 
   availableHeight: ->
     height = document.querySelector('.game').offsetHeight - @headerHeight - @controlsHeight
     height = Math.floor(height/@gridSize) * @gridSize
     if height > 320 then 320 else height
-    #Math.floor(height/@gridSize) * @gridSize
 
   changeState: (to, callback = null) ->
     $(page).removeClass('active') for page in $(@pages)
