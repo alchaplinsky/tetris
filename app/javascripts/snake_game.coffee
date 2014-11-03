@@ -80,6 +80,7 @@ class window.SnakeGame
       @context.fillStyle = options.image
     @context.beginPath()
     @context.rect options.x, options.y, @gridSize, @gridSize
+    console.log options.x, options.y
     @context.fill()
 
   resetCanvas: ->
@@ -118,6 +119,7 @@ class Snake
     @game.stop() if @isCollision(@x, @y)
 
   isCollision: (x, y) ->
+    console.log @game.canvas.width
     x < 0 || x is @game.canvas.width || y < 0 || y is @game.canvas.height || @sections.indexOf(x+','+y) >= 0
 
   checkGrowth: ->
