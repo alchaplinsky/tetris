@@ -3,7 +3,7 @@ class TrainSnake
   headerHeight: 41
   controlsHeight: 149
   gridSize: 20
-  url: 'http://afternoon-reaches-8379.herokuapp.com/scores'
+  url: 'http://afternoon-reaches-8379.herokuapp.com/snake/scores'
 
   pages: '.intro, .game, .confirmation, .gameover, .thankyou'
 
