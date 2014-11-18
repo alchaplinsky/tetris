@@ -1,9 +1,9 @@
-class TrainSnake
+class TrainTetris
 
   headerHeight: 41
   controlsHeight: 149
   gridSize: 20
-  url: 'http://afternoon-reaches-8379.herokuapp.com/snake/scores'
+  url: 'http://afternoon-reaches-8379.herokuapp.com/tetris/scores'
 
   pages: '.intro, .game, .confirmation, .gameover, .thankyou'
 
@@ -53,8 +53,8 @@ class TrainSnake
 
   startGame: ->
     @changeState('.game')
-    @calculateGameArea()
-    @game = new SnakeGame()
+    #@calculateGameArea()
+    @game = new Tetris()
     @game.start()
 
   confirmQuit: ->
@@ -132,4 +132,4 @@ class TrainSnake
 
 window.onload = ->
   FastClick.attach(document.body)
-  new TrainSnake()
+  new TrainTetris()

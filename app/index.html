@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Train Snake</title>
+  <title>Train Tetris</title>
 
   <!-- build:css stylesheets/application.css -->
     <link rel="stylesheet" href="stylesheets/application.css">
@@ -11,7 +11,7 @@
   <!-- build:js javascripts/application.js -->
     <script type="text/javascript" src="bower_components/zepto/zepto.js"></script>
     <script type="text/javascript" src="bower_components/fastclick/lib/fastclick.js"></script>
-    <script type="text/javascript" src="javascripts/snake_game.js"></script>
+    <script type="text/javascript" src="javascripts/tetris.js"></script>
     <script type="text/javascript" src="javascripts/application.js"></script>
   <!-- endbuild -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no" />
@@ -23,8 +23,8 @@
       <span><i class="icon-back"></i> Back</span>
     </div>
     <div class="content">
-      <h1 class="pvm">Train snake</h1>
-      <h3>Same as old favourite snake, but with trains. Press arrows to navigate. Try to get maximum score to appear on our scoreboard. Good luck!</h3>
+      <h1 class="pvm">Train tetris</h1>
+      <h3>Same as old favourite tetris, but with trains. Press arrows to navigate. Try to get maximum score to appear on our scoreboard. Good luck!</h3>
       <span class="button start" id="start">Start</span>
     </div>
     <br><br><br>
@@ -37,16 +37,16 @@
   </div>
 
   <div class="page game">
+    <div class="overlay"></div>
     <div class="navigation">
       <span id="quit"><i class="icon-back"></i> Menu</span>
     </div>
-    <canvas id="game-canvas" class="game-canvas"></canvas>
-    <div class="controls">
-      <div class="inner">
-        <span class="control icon-arrow-up" data-direction="up"></span>
-        <span class="control icon-arrow-right" data-direction="right"></span>
-        <span class="control icon-arrow-down" data-direction="down"></span>
-        <span class="control icon-arrow-left" data-direction="left"></span>
+    <div class="game-canvas">
+      <div class="game-area"></div>
+      <div class="adds">
+        <div>Your score</div>
+        <div class="score highlight">77434</div>
+        <div>Next shape</div>
       </div>
     </div>
   </div>
@@ -54,7 +54,7 @@
   <div class="page confirmation">
     <div class="overlay"></div>
     <div class="content by-center">
-      <h1 class="highlight mbl">Are you sure<br /> you want<br /> to quit?</h1>
+      <h1 class="mbl">Are you sure<br /> you want<br /> to quit?</h1>
       <div>
         <span class="button back" id="back">No, go back</span>
         <span class="button confirm" id="confirm">Yes</span>
@@ -68,7 +68,7 @@
       <span class="home"><i class="icon-back"></i> Menu</span>
     </div>
     <div class="content by-center">
-      <h1 class="highlight mbs">Game over</h1>
+      <h1 class="mbs">Game over</h1>
       <h2 class="mbm">Your score is: <span id="score" class="highlight"></span><h2>
       <h2>Enter your name:</h2>
       <input type="text" class="username" name="username"/>
@@ -82,8 +82,8 @@
       <span class="home"><i class="icon-back"></i> Menu</span>
     </div>
     <div class="content by-center">
-      <h1 class="highlight mbm" id="message-title"></h1>
-      <h2 class="mbm" id="message-text"></h2>
+      <h1 class="mbm">Thank you!</h1>
+      <h2 class="mbm">You are number <span class="highlight">321</span><br />in our score board</h2>
       <span class="button restart" id="restart">Play again</span>
     </div>
   </div>

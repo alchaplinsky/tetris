@@ -22,17 +22,18 @@ body
   padding: 0.75rem 1rem
   span
     text-decoration: none
+    cursor: pointer
     color: #fff
     padding: 4px 0
     transition: color .3s ease
     i:before
-      color: #00E2A7
+      color: #d6de23
       position: relative
       top: 3px
       font-size: 1.3rem
       margin-right: 5px
     &:hover
-      color: #00E2A7
+      color: #d6de23
 
 .intro, .game, .confirmation, .gameover, .thankyou
   height: 100%
@@ -43,7 +44,6 @@ body
     transition: opacity .2s ease
     opacity: 1
 
-
 .overlay
   position: absolute
   top: 0
@@ -52,11 +52,11 @@ body
   height: 100%
   width: 320px
   margin-left: -160px
-  background: rgba(0,0,0,.3)
+  background: rgba(114,160,27,.5)
 
 .confirmation, .gameover, .thankyou
   .overlay
-    background: rgba(0,0,0,.6)
+    background: rgba(100,145,11,.8)
 
 .content
   position: relative
