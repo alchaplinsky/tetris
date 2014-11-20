@@ -2,6 +2,9 @@ module.exports =
   tmp:
     src: 'app/index.html'
     dest: '.tmp/index.html'
+  js:
+    src: 'app/javascripts/tetris.js'
+    dest: '.tmp/javascripts/tetris.js'
   html:
     files: [
       expand: true,

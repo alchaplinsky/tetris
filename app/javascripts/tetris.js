@@ -441,8 +441,25 @@ Tetris = (function(){
 
 	function On(){
 		on = true;
-
 		if(!p[0].gameover){
+			$(keh).on('click', '.controls .control', function(e){
+				dir = $(e.currentTarget).data('direction')
+				switch(dir){
+					case 'left':
+						p[0].translate(0, -1)
+					break;
+					case 'right':
+						p[0].translate(0, 1);
+					break;
+					case 'down':
+						p[0].translate(1, 0);
+					break;
+					case 'rcw':
+						p[0].translate(0, 0)
+					break;
+				}
+			});
+
 			keh.onkeyup = function(e){
 				switch(key(e)){
 					case keys[0].val:

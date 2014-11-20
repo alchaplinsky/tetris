@@ -3,6 +3,7 @@ build:
   - 'sass:dist'
   - 'coffee:dist'
   - 'copy:tmp'
+  - 'copy:js'
   - 'copy:html'
   - 'copy:bower'
   - 'useminPrepare'
