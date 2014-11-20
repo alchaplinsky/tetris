@@ -12,9 +12,93 @@
   float: left
   background: #fff
 
-.adds
+.pg_keeper .score
   width: 105px
-  float: left
   text-align: center
-  .score
-    margin-bottom: 50px
+  position: absolute
+  left: 190px
+  div:last-child
+    color: #d6de23
+
+.pg_keeper .next-figure
+  position: relative
+  top: 100px
+  table
+    margin: 0 auto
+  &:before
+    text-align: center
+    display: block
+    content: 'Next Shape'
+    margin-bottom: 15px
+
+#game
+  padding-left: 50px
+  text-align: center
+
+.pg_keeper
+  position: relative
+  display: inline-block
+
+.pg_keeper > div:first-child > label
+  font-size: 16px
+
+.pg_keeper > div:first-child > label:last-child
+  color: #00c000
+
+.pg_keeper > table
+  background: #fff
+  display: inline-block
+  border-spacing: 1px
+  border: 1px solid #808080
+
+.pg_keeper > table td
+  padding: 10px
+  background-color: transparent
+
+.pg_keeper > div + table + div
+  display: inline-block
+  padding: 0px 8px 0 10px
+  vertical-align: top
+
+.pg_keeper > div + table + div > table
+  margin-bottom: 10px
+  border-spacing: 1px
+
+.pg_keeper > div + table + div > table td
+  padding: 10px
+  background-color: transparent
+
+.pg_keeper table td.red,
+.pg_keeper table td.orange,
+.pg_keeper table td.yellow,
+.pg_keeper table td.green,
+.pg_keeper table td.lightblue,
+.pg_keeper table td.blue,
+.pg_keeper table td.violet,
+  box-shadow: 0 0 1px #aaa
+
+.pg_keeper  table td.red
+  background-image: url('../images/red.png')
+
+.pg_keeper  table td.orange
+  background-image: url('../images/orange.png')
+
+.pg_keeper  table td.yellow
+  background-image: url('../images/yellow.png')
+
+.pg_keeper  table td.green
+  background-image: url('../images/green.png')
+
+.pg_keeper  table td.lightblue
+  background-image: url('../images/light_blue.png')
+
+.pg_keeper  table td.blue
+  background-image: url('../images/blue.png')
+
+.pg_keeper table td.violet
+  background-image: url('../images/blue.png')
+
+.pg_keeper > div + table + div + table
+  border-spacing: 1px
+  border: 1px solid red
+  position: absolute

@@ -11,6 +11,7 @@
   <!-- build:js javascripts/application.js -->
     <script type="text/javascript" src="bower_components/zepto/zepto.js"></script>
     <script type="text/javascript" src="bower_components/fastclick/lib/fastclick.js"></script>
+    <script type="text/javascript" src="javascripts/array.js"></script>
     <script type="text/javascript" src="javascripts/tetris.js"></script>
     <script type="text/javascript" src="javascripts/application.js"></script>
   <!-- endbuild -->
@@ -41,13 +42,13 @@
     <div class="navigation">
       <span id="quit"><i class="icon-back"></i> Menu</span>
     </div>
-    <div class="game-canvas">
-      <div class="game-area"></div>
-      <div class="adds">
-        <div>Your score</div>
-        <div class="score highlight">77434</div>
-        <div>Next shape</div>
-      </div>
+    <div class="game-canvas" id="game-canvas">
+    </div>
+    <div class="controls">
+      <span class="control icon-arrow-left"></span>
+      <span class="control icon-arrow-down"></span>
+      <span class="control icon-arrow-right"></span>
+      <span class="control icon-rotate"></span>
     </div>
   </div>
 
@@ -69,7 +70,7 @@
     </div>
     <div class="content by-center">
       <h1 class="mbs">Game over</h1>
-      <h2 class="mbm">Your score is: <span id="score" class="highlight"></span><h2>
+      <h2 class="mbm">Your score is: <span id="score" class="highlight">0</span><h2>
       <h2>Enter your name:</h2>
       <input type="text" class="username" name="username"/>
       <span class="button submit" id="submit">Submit your results</span>
@@ -83,7 +84,7 @@
     </div>
     <div class="content by-center">
       <h1 class="mbm">Thank you!</h1>
-      <h2 class="mbm">You are number <span class="highlight">321</span><br />in our score board</h2>
+      <h2 class="mbm">You are number <span class="highlight" id="rating"></span><br />in our score board</h2>
       <span class="button restart" id="restart">Play again</span>
     </div>
   </div>
