@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Train Tetris</title>
+
+  <link rel="stylesheet" href="stylesheets/application.css"/>
+
+  <script src="javascripts/application.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no" />
+</head>
+<body>
+  <div class="page intro">
+    <div class="overlay"></div>
+    <div class="navigation">
+      <span><i class="icon-back"></i> Back</span>
+    </div>
+    <div class="content">
+      <h1 class="pvm">Train tetris</h1>
+      <h3>Same as old favourite tetris, but with trains. Press arrows to navigate. Try to get maximum score to appear on our scoreboard. Good luck!</h3>
+      <span class="button start" id="start">Start</span>
+    </div>
+    <br><br><br>
+    <div class="scoreboard">
+      <div class="content">
+        <h2>Top 20 results</h2>
+        <ol></ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="page game">
+    <div class="overlay"></div>
+    <div class="navigation">
+      <span id="quit"><i class="icon-back"></i> Menu</span>
+    </div>
+    <div class="game-canvas" id="game-canvas">
+    </div>
+    <div class="controls">
+      <span class="control icon-arrow-left" data-direction="left"></span>
+      <span class="control icon-arrow-down" data-direction="down"></span>
+      <span class="control icon-arrow-right" data-direction="right"></span>
+      <span class="control icon-rotate" data-direction="rcw"></span>
+    </div>
+  </div>
+
+  <div class="page confirmation">
+    <div class="overlay"></div>
+    <div class="content by-center">
+      <h1 class="mbl">Are you sure<br /> you want<br /> to quit?</h1>
+      <div>
+        <span class="button back" id="back">No, go back</span>
+        <span class="button confirm" id="confirm">Yes</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="page gameover">
+    <div class="overlay"></div>
+    <div class="navigation">
+      <span class="home"><i class="icon-back"></i> Menu</span>
+    </div>
+    <div class="content by-center">
+      <h1 class="mbs">Game over</h1>
+      <h2 class="mbm">Your score is: <span id="score" class="highlight">0</span><h2>
+      <h2>Enter your name:</h2>
+      <input type="text" class="username" name="username"/>
+      <span class="button submit" id="submit">Submit your results</span>
+    </div>
+  </div>
+
+  <div class="page thankyou">
+    <div class="overlay"></div>
+    <div class="navigation">
+      <span class="home"><i class="icon-back"></i> Menu</span>
+    </div>
+    <div class="content by-center">
+      <h1 class="mbm">Thank you!</h1>
+      <h2 class="mbm">You are number <span class="highlight" id="rating"></span><br />in our score board</h2>
+      <span class="button restart" id="restart">Play again</span>
+    </div>
+  </div>
+
+</body>
+</html>
