@@ -10,7 +10,7 @@ Tetris = (function(){
 			return f;
 		}()
 		this.map = function(){
-			var W = 9, H = 20;
+			var W = 9, H = 18;
 			var m = [];
 			for(var y = 0; y < H; y ++){
 				m.push([]);
@@ -534,6 +534,7 @@ Tetris = (function(){
 
 		keh.onkeyup = null;
 		keh.onkeydown = null;
+		$(keh).off('click');
 
 		window.clearTimeout(timer);
 		for(var counter = 0; counter < p.length; counter ++){
