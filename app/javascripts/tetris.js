@@ -10,7 +10,7 @@ Tetris = (function(){
 			return f;
 		}()
 		this.map = function(){
-			var W = 9, H = 18;
+			var W = 9, H = 15;
 			var m = [];
 			for(var y = 0; y < H; y ++){
 				m.push([]);
